@@ -1,7 +1,6 @@
 import path from "node:path";
-import remixDev from "@remix-run/dev"; // Import the default export
 
-const { defineRoutes } = remixDev; // Destructure `defineRoutes`
+
 
 /** @type {import('@remix-run/dev').AppConfig} */
 export default {

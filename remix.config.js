@@ -1,4 +1,7 @@
 import path from "node:path";
+import remixDev from "@remix-run/dev"; // Import the default export
+
+const { defineRoutes } = remixDev; // Destructure `defineRoutes`
 
 /** @type {import('@remix-run/dev').AppConfig} */
 export default {
@@ -18,7 +21,18 @@ export default {
 
       route(
         "__tests/create-user",
-        path.relative(appDir, "cypress/support/test-routes/create-user.ts"),
+        path.relative(appDir, "cypress/support/test-routes/create-user.ts")
       );
     }),
+  serverDependenciesToBundle: [
+    "@aws-sdk/client-dynamodb",
+    "@aws-sdk/lib-dynamodb",
+    "aws-sdk/clients/dynamodb",
+    "@smithy/node-http-handler",
+  ],
+  browserNodeBuiltinsPolyfill: {
+    modules: {
+      querystring: true, // Enable polyfill for `node:querystring`
+    },
+  },
 };

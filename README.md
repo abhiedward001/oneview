@@ -33,15 +33,6 @@ Click this button to create a [Gitpod](https://gitpod.io) workspace with the pro
 
 ## Development
 
-- First run this stack's `remix.init` script and commit the changes it makes to your project.
-
-  ```sh
-  npx remix init
-  git init # if you haven't already
-  git add .
-  git commit -m "Initialize project"
-  ```
-
 - Validate the app has been set up properly (optional):
 
   ```sh
@@ -82,13 +73,13 @@ Prior to your first deployment, you'll need to do a few things:
 
 - Create an [AWS credentials file](https://docs.aws.amazon.com/cli/latest/userguide/getting-started-quickstart.html#getting-started-quickstart-new).
 
-- Along with your AWS credentials, you'll also need to give your CloudFormation a `SESSION_SECRET` variable of its own for both staging and production environments, as well as an `ARC_APP_SECRET` for Arc itself.
+- Along with your AWS credentials, you'll also need to give your CloudFormation a `aws_secret_access_key` variable of its own for both staging and production environments, as well as an `ARC_APP_SECRET` for Arc itself.
 
   ```sh
   npx arc env --add --env staging ARC_APP_SECRET $(openssl rand -hex 32)
-  npx arc env --add --env staging SESSION_SECRET $(openssl rand -hex 32)
+  npx arc env --add --env staging aws_secret_access_key $(openssl rand -hex 32)
   npx arc env --add --env production ARC_APP_SECRET $(openssl rand -hex 32)
-  npx arc env --add --env production SESSION_SECRET $(openssl rand -hex 32)
+  npx arc env --add --env production aws_secret_access_key $(openssl rand -hex 32)
   ```
 
   If you don't have openssl installed, you can also use [1password](https://1password.com/password-generator) to generate a random secret, just replace `$(openssl rand -hex 32)` with the generated secret.
@@ -97,7 +88,7 @@ Prior to your first deployment, you'll need to do a few things:
 
 You can find the CloudFormation template that Architect generated for you in the sam.yaml file.
 
-To find it on AWS, you can search for [CloudFormation](https://console.aws.amazon.com/cloudformation/home) (make sure you're looking at the correct region!) and find the name of your stack (the name is a PascalCased version of what you have in `app.arc`, so by default it's RemixGrungeStackStaging and RemixGrungeStackProduction) that matches what's in `app.arc`, you can find all of your app's resources under the "Resources" tab.
+To find it on AWS, you can search for [CloudFormation](https://console.aws.amazon.com/cloudformation/home) (make sure you're looking at the correct region!) and find the name of your stack (the name is a PascalCased version of what you have in `app.arc`, so by default it's Oneview5700Staging and Oneview5700Production) that matches what's in `app.arc`, you can find all of your app's resources under the "Resources" tab.
 
 ## GitHub Actions
 

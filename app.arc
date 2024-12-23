@@ -1,12 +1,12 @@
 @app
-grunge-stack-template
+oneview-5700
 
 @aws
 runtime nodejs18.x
 # concurrency 1
 # memory 1152
 # profile default
-# region us-west-1
+# region ap-south-1
 # timeout 30
 
 @http

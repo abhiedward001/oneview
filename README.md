@@ -73,13 +73,13 @@ Prior to your first deployment, you'll need to do a few things:
 
 - Create an [AWS credentials file](https://docs.aws.amazon.com/cli/latest/userguide/getting-started-quickstart.html#getting-started-quickstart-new).
 
-- Along with your AWS credentials, you'll also need to give your CloudFormation a `aws_secret_access_key` variable of its own for both staging and production environments, as well as an `ARC_APP_SECRET` for Arc itself.
+- Along with your AWS credentials, you'll also need to give your CloudFormation a `AWS_SECRET_ACCESS_KEY` variable of its own for both staging and production environments, as well as an `ARC_APP_SECRET` for Arc itself.
 
   ```sh
   npx arc env --add --env staging ARC_APP_SECRET $(openssl rand -hex 32)
-  npx arc env --add --env staging aws_secret_access_key $(openssl rand -hex 32)
+  npx arc env --add --env staging AWS_SECRET_ACCESS_KEY $(openssl rand -hex 32)
   npx arc env --add --env production ARC_APP_SECRET $(openssl rand -hex 32)
-  npx arc env --add --env production aws_secret_access_key $(openssl rand -hex 32)
+  npx arc env --add --env production AWS_SECRET_ACCESS_KEY $(openssl rand -hex 32)
   ```
 
   If you don't have openssl installed, you can also use [1password](https://1password.com/password-generator) to generate a random secret, just replace `$(openssl rand -hex 32)` with the generated secret.

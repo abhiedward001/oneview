@@ -4,7 +4,7 @@ import invariant from "tiny-invariant";
 import type { User } from "~/models/user.server";
 import { getUserById } from "~/models/user.server";
 
-invariant(process.env.aws_secret_access_key, "aws_secret_access_key must be set");
+invariant(process.env.AWS_SECRET_ACCESS_KEY, "AWS_SECRET_ACCESS_KEY must be set");
 
 export const sessionStorage = createCookieSessionStorage({
   cookie: {
@@ -12,7 +12,7 @@ export const sessionStorage = createCookieSessionStorage({
     httpOnly: true,
     path: "/",
     sameSite: "lax",
-    secrets: [process.env.aws_secret_access_key],
+    secrets: [process.env.AWS_SECRET_ACCESS_KEY],
     secure: process.env.NODE_ENV === "production",
   },
 });

@@ -84,8 +84,8 @@ const main = async ({ packageManager, rootDirectory }) => {
   ]);
 
   const newEnv = env.replace(
-    /^aws_secret_access_key=.*$/m,
-    `aws_secret_access_key="${getRandomString(16)}"`,
+    /^AWS_SECRET_ACCESS_KEY=.*$/m,
+    `AWS_SECRET_ACCESS_KEY="${getRandomString(16)}"`,
   );
 
   const initInstructions = `
